@@ -2,12 +2,14 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const recordsRoutes = require('./routes/records.js');
 
 // express app
 const app = express();
 
 // middleware
+app.use(cors());
 app.use(express.json()); //parse incoming requests with JSON payloads
 
 // routes
