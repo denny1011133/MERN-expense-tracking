@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 // components
 import RecordDetails from '../components/RecordDetails';
+import RecordForm from '../components/RecordForm';
 
 const Home = () => {
   const [records, setRecords] = useState([]);
@@ -26,6 +27,7 @@ const Home = () => {
             <RecordDetails record={record} key={record._id} />
           ))}
       </div>
+      <RecordForm />
     </div>
   );
 };
