@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useRecordsContext } from '../hooks/useRecordsContext';
 
 const RecordForm = () => {
+  const { dispatch } = useRecordsContext();
+
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
   const [type, setType] = useState('');
@@ -21,6 +24,7 @@ const RecordForm = () => {
       setTitle('');
       setAmount(0);
       setType('');
+      dispatch({ type: 'CREATE_RECORD', payload: record });
     } catch (error) {
       setError(error.message);
     }
