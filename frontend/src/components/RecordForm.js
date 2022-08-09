@@ -16,15 +16,12 @@ const RecordForm = () => {
 
       const record = { title, amount, type };
 
-      const response = await axios.post(
-        'http://localhost:4000/api/records',
-        record
-      );
+      const res = await axios.post('http://localhost:4000/api/records', record);
 
       setTitle('');
       setAmount(0);
       setType('');
-      dispatch({ type: 'CREATE_RECORD', payload: record });
+      dispatch({ type: 'CREATE_RECORD', payload: res.data });
     } catch (error) {
       setError(error.message);
     }

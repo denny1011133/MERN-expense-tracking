@@ -25,9 +25,9 @@ const Home = () => {
     <div className="home">
       <div className="records">
         {records &&
-          records?.map(record => (
-            <RecordDetails record={record} key={record._id} />
-          ))}
+          records?.map(record => {
+            return <RecordDetails record={record} key={record._id} />;
+          })}
       </div>
       <RecordForm />
     </div>
