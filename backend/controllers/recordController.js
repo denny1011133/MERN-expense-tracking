@@ -25,7 +25,22 @@ const getRecord = async (req, res) => {
 
 const createRecord = async (req, res) => {
   const { title, amount, type } = req.body;
+  let emptyFields = [];
 
+  if (!title) {
+    emptyFields.push('title');
+  }
+  if (!amount) {
+    emptyFields.push('amount');
+  }
+  if (!type) {
+    emptyFields.push('type');
+  }
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: 'Please fill in all fields', emptyFields });
+  }
   try {
     const record = await Record.create({ title, amount, type });
     res.status(200).json(record);

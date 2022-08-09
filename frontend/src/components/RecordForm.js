@@ -9,6 +9,7 @@ const RecordForm = () => {
   const [amount, setAmount] = useState(0);
   const [type, setType] = useState('');
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async e => {
     try {
@@ -21,9 +22,12 @@ const RecordForm = () => {
       setTitle('');
       setAmount(0);
       setType('');
+      setEmptyFields([]);
+      setError(null);
       dispatch({ type: 'CREATE_RECORD', payload: res.data });
     } catch (error) {
       setError(error.message);
+      setEmptyFields(JSON.parse(error.request.response).emptyFields);
     }
   };
 
@@ -36,6 +40,7 @@ const RecordForm = () => {
         type="text"
         onChange={e => setTitle(e.target.value)}
         value={title}
+        className={emptyFields.includes('title') ? 'error' : ''}
       />
 
       <label>Amount:</label>
@@ -43,10 +48,16 @@ const RecordForm = () => {
         type="number"
         onChange={e => setAmount(e.target.value)}
         value={amount}
+        className={emptyFields.includes('amount') ? 'error' : ''}
       />
 
       <label>Type:</label>
-      <input type="text" onChange={e => setType(e.target.value)} value={type} />
+      <input
+        type="text"
+        onChange={e => setType(e.target.value)}
+        value={type}
+        className={emptyFields.includes('type') ? 'error' : ''}
+      />
 
       <button>Add Expense</button>
       {error && <div className="error">{error}</div>}
