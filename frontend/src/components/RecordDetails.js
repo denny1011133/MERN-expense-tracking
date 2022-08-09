@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useRecordsContext } from '../hooks/useRecordsContext';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 const RecordDetails = ({ record }) => {
   const { dispatch } = useRecordsContext();
@@ -28,8 +29,12 @@ const RecordDetails = ({ record }) => {
         <strong>type: </strong>
         {type}
       </p>
-      <p>{createdAt}</p>
-      <span onClick={handleClick}>delete</span>
+      <p>
+        {formatDistanceToNow(new Date(record.createdAt), { addSuffix: true })}
+      </p>
+      <span className="material-symbols-outlined" onClick={handleClick}>
+        delete
+      </span>
     </div>
   );
 };
