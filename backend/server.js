@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const recordsRoutes = require('./routes/records.js');
+const userRoutes = require('./routes/user');
 
 // express app
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json()); //parse incoming requests with JSON payloads
 
 // routes
 app.use('/api/records', recordsRoutes);
+app.use('/api/user', userRoutes);
 
 // connect to db
 mongoose
