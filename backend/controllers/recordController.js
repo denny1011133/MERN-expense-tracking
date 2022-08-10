@@ -2,7 +2,8 @@ const Record = require('../models/recordModel');
 const mongoose = require('mongoose');
 
 const getRecords = async (req, res) => {
-  const records = await Record.find({}).sort({ createdAt: -1 });
+  const user_id = req.user._id;
+  const records = await Record.find({ user_id }).sort({ createdAt: -1 });
 
   res.status(200).json(records);
 };
@@ -42,7 +43,8 @@ const createRecord = async (req, res) => {
       .json({ error: 'Please fill in all fields', emptyFields });
   }
   try {
-    const record = await Record.create({ title, amount, type });
+    const user_id = req.user._id;
+    const record = await Record.create({ title, amount, type, user_id });
     res.status(200).json(record);
   } catch (error) {
     res.status(400).json({ error: error.message });
