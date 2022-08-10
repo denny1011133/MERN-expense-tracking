@@ -1,17 +1,16 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
-
-export const useSignup = () => {
+import axios from 'axios';
+export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password) => {
+  const login = async (email, password) => {
     try {
       setIsLoading(true);
       setError(null);
-      const res = await axios.post('http://localhost:4000/api/user/signup', {
+      const res = await axios.post('http://localhost:4000/api/user/login', {
         email,
         password,
       });
@@ -25,5 +24,5 @@ export const useSignup = () => {
     }
   };
 
-  return { signup, isLoading, error };
+  return { login, isLoading, error };
 };
