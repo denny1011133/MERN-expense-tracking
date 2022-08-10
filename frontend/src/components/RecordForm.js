@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useRecordsContext } from '../hooks/useRecordsContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const RecordForm = () => {
   const { dispatch } = useRecordsContext();
+  const { user } = useAuthContext();
 
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
@@ -17,7 +19,15 @@ const RecordForm = () => {
 
       const record = { title, amount, type };
 
-      const res = await axios.post('http://localhost:4000/api/records', record);
+      const res = await axios.post(
+        'http://localhost:4000/api/records',
+        record,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
 
       setTitle('');
       setAmount(0);
