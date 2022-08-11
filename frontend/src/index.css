@@ -105,7 +105,8 @@ nav {
   display: flex;
   align-items: center;
 }
-nav a {
+nav a,
+nav button {
   margin-left: 10px;
 }
 nav button {
@@ -118,7 +119,6 @@ nav button {
   cursor: pointer;
   font-size: 1em;
 }
-
 /* auth forms */
 form.signup,
 form.login {
