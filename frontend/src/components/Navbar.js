@@ -13,7 +13,10 @@ const Navbar = () => {
     <header>
       <div className="container">
         <Link to="/">
-          <h1>Expense-tracker</h1>
+          <h1>
+            Expense-tracker{' '}
+            <span className="material-symbols-outlined">credit_card</span>
+          </h1>
         </Link>
         <nav>
           {user && (

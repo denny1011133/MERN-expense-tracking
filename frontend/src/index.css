@@ -3,16 +3,16 @@
 
 /* layout */
 :root {
-  --primary: #1aac83;
+  --primary: #ff9f1c;
   --error: #e7195a;
 }
 body {
-  background: #f1f1f1;
+  background: #2ec4b6;
   margin: 0;
   font-family: 'Poppins';
 }
 header {
-  background: #fff;
+  background-color: #cbf3f0;
 }
 header .container {
   max-width: 1400px;
@@ -34,7 +34,7 @@ header a {
 /* homepage */
 .home {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 100px;
 }
 .record-details {
