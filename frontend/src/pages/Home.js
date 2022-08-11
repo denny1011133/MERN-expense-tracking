@@ -13,9 +13,12 @@ const Home = () => {
   useEffect(() => {
     const fetchRecords = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/records', {
-          headers: { Authorization: `Bearer ${user.token}` },
-        });
+        const response = await axios.get(
+          'https://expensetrackerde.herokuapp.com/api/records',
+          {
+            headers: { Authorization: `Bearer ${user.token}` },
+          }
+        );
         dispatch({ type: 'SET_RECORDS', payload: response.data });
       } catch (error) {
         console.log(error);

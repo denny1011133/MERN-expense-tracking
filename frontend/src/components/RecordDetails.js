@@ -10,7 +10,7 @@ const RecordDetails = ({ record }) => {
   const handleClick = async () => {
     try {
       const res = await axios.delete(
-        `http://localhost:4000/api/records/${record._id}`,
+        `https://expensetrackerde.herokuapp.com/api/records/${record._id}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

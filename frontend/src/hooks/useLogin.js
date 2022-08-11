@@ -10,10 +10,13 @@ export const useLogin = () => {
     try {
       setIsLoading(true);
       setError(null);
-      const res = await axios.post('http://localhost:4000/api/user/login', {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        'https://expensetrackerde.herokuapp.com/api/user/login',
+        {
+          email,
+          password,
+        }
+      );
       localStorage.setItem('user', JSON.stringify(res.data));
       dispatch({ type: 'LOGIN', payload: res.data });
       setIsLoading(false);
