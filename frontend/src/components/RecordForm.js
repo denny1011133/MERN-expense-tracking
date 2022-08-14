@@ -20,7 +20,7 @@ const RecordForm = () => {
       const record = { title, amount, type };
 
       const res = await axios.post(
-        'http://localhost:4000/api/records',
+        'https://expensetrackerde.herokuapp.com/api/records',
         record,
         {
           headers: {
