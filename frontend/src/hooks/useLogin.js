@@ -11,7 +11,7 @@ export const useLogin = () => {
       setIsLoading(true);
       setError(null);
       const res = await axios.post(
-        'https://expensetrackerde.herokuapp.com/api/user/login',
+        'https://mern-expense-tracking-backend.vercel.app/api/user/login',
         {
           email,
           password,

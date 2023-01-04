@@ -11,10 +11,13 @@ export const useSignup = () => {
     try {
       setIsLoading(true);
       setError(null);
-      const res = await axios.post('http://localhost:4000/api/user/signup', {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        'https://mern-expense-tracking-backend.vercel.app/api/user/signup',
+        {
+          email,
+          password,
+        }
+      );
       localStorage.setItem('user', JSON.stringify(res.data));
       dispatch({ type: 'LOGIN', payload: res.data });
       setIsLoading(false);

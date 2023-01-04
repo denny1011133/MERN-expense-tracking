@@ -20,7 +20,7 @@ const RecordForm = () => {
       const record = { title, amount, type };
 
       const res = await axios.post(
-        'https://expensetrackerde.herokuapp.com/api/records',
+        'https://mern-expense-tracking-backend.vercel.app/api/records',
         record,
         {
           headers: {

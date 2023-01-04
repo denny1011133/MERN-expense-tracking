@@ -14,7 +14,7 @@ const Home = () => {
     const fetchRecords = async () => {
       try {
         const response = await axios.get(
-          'https://expensetrackerde.herokuapp.com/api/records',
+          'https://mern-expense-tracking-backend.vercel.app/api/records',
           {
             headers: { Authorization: `Bearer ${user.token}` },
           }
